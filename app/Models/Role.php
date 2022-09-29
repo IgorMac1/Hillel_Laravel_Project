@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
+use App\Helpers\Enums\RolesEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name'
+    ];
 
     public function users()
     {
@@ -16,11 +23,20 @@ class Role extends Model
 
     public function scopeAdmin($query)
     {
-
+        return$this->getRole($query,'admin');
     }
 
     public function scopeCustomer($query)
     {
+        return$this->getRole($query);
+    }
 
+    protected function getRole($query,$role = 'customer')
+    {
+        return $query->where(
+          'name',
+          '=',
+          RolesEnum::findByKey(ucfirst($role))->value
+        );
     }
 }

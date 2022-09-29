@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,8 +19,10 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $role = Role::customer()->first();
+
         return [
-            'role_id' => '',//
+            'role_id' => $role->id,
             'name' => fake()->name(),
             'surname' => fake()->lastName(),
             'birthdate' => fake()->dateTimeBetween('-70 years','-18 years')->format('Y-m-d'),
@@ -34,7 +37,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes){
             return [
-                'role_id' => ''//
+                'role_id' => Role::admin()->first()->id
             ];
         });
     }

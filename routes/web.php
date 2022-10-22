@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\TestController;
+use App\Services\Contracts\UserInfoContract;
+use App\Services\UserInfoHtml;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('test',[TestController::class,'test']);
+
+
 
 Route::get('/', function () {
 //    dd(route('admin.products.show', 2));

@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestController;
-use App\Services\Contracts\UserInfoContract;
-use App\Services\UserInfoHtml;
-use App\Services\UserInfoJson;
+use App\Services\Contract\FileStorageServiceContract;
+use App\Services\FileStorageServiceHtml;
+use App\Services\FileStorageServiceJson;
 use Illuminate\Support\ServiceProvider;
 
 class UserInfoProvider extends ServiceProvider
@@ -19,12 +19,12 @@ class UserInfoProvider extends ServiceProvider
     public function register()
     {
         $this->app->when(TestController::class)
-            ->needs(UserInfoContract::class)
-            ->give(UserInfoJson::class);
+            ->needs(FileStorageServiceContract::class)
+            ->give(FileStorageServiceJson::class);
 
         $this->app->when(HomeController::class)
-            ->needs(UserInfoContract::class)
-            ->give(UserInfoHtml::class);
+            ->needs(FileStorageServiceContract::class)
+            ->give(FileStorageServiceHtml::class);
 
 
     }

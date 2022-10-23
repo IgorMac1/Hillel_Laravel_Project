@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Contracts\UserInfoContract;
+use App\Services\Contract\FileStorageServiceContract;
 
 class TestController
 {
-    public function __construct(protected UserInfoContract $contract)
+    public function __construct(protected FileStorageServiceContract $contract)
     {
 
     }

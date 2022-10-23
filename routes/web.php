@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\TestController;
-use App\Services\Contracts\UserInfoContract;
-use App\Services\UserInfoHtml;
+use App\Services\Contract\FileStorageServiceContract;
+use App\Services\FileStorageServiceHtml;
 use Illuminate\Support\Facades\Route;
 
 /*

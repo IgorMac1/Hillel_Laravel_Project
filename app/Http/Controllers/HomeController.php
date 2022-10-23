@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\Contracts\UserInfoContract;
 
 class HomeController extends Controller
 {
@@ -11,8 +12,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserInfoContract $contract)
     {
+        $this->contract = $contract;
         $this->middleware('auth');
     }
 
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd($this->contract->generate());
         return view('home');
     }
 }

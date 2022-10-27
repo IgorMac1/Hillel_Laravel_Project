@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\Contracts\UserInfoContract;
+use App\Services\Contract\FileStorageServiceContract;
 
 class HomeController extends Controller
 {
@@ -12,7 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(UserInfoContract $contract)
+    public function __construct(FileStorageServiceContract $contract)
     {
         $this->contract = $contract;
         $this->middleware('auth');

@@ -150,7 +150,7 @@
                                             @if(Storage::has($image->path))
                                                 <div class="col-sm-12 d-flex justify-content-center align-items-center">
                                                     <img src="{{ $image->url }}" class="card-img-top" style="max-width: 80%; margin: 0 auto; display: block;">
-                                                    <a data-route="{{ route('ajax.images.delete', $image->id) }}"
+                                                    <a data-route="{{ route('ajax.images.delete', $image) }}"
                                                        class="btn btn-danger remove-product-image">x</a>
                                                 </div>
                                             @endif

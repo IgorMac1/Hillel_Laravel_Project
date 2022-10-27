@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProductRequest;
  use App\Models\Product;
  use App\Repositories\Contracts\ProductRepositoryContract;
  use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UpdateProductRequest;
 
  class ProductRepository implements ProductRepositoryContract
  {
@@ -20,12 +21,37 @@ use App\Http\Requests\CreateProductRequest;
              DB::beginTransaction();
 
              $data = $request->validated();
+             $images = $data['images'] ?? [];
              $category = Category::find($data['category']);
              $product = $category->products()->create($data);
+             ImageRepository::attach($product, 'images', $images);
 
              DB::commit();
 
              return $product;
+         } catch (\Exception $e) {
+             DB::rollBack();
+             logs()->warning($e);
+             return false;
+         }
+     }
+     /**
+      * @param Product $product
+      * @param UpdateProductRequest $request
+      * @return bool
+      * @throws \Throwable
+      */
+     public function update(Product $product, UpdateProductRequest $request): bool
+     {
+         try {
+             DB::beginTransaction();
+
+             $product->update($request->validated());
+             ImageRepository::attach($product, 'images', $request->images ?? []);
+
+             DB::commit();
+
+             return true;
          } catch (\Exception $e) {
              DB::rollBack();
              logs()->warning($e);

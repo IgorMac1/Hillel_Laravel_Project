@@ -71,6 +71,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $customer = Role::where('name','Customer')->first();
+
         $data['password'] = Hash::make($data['password']);
         return $customer->users()->create($data);
     }

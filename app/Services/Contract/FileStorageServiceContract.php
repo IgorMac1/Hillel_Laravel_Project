@@ -2,7 +2,9 @@
 
 namespace App\Services\Contract;
 
-use GuzzleHttp\Psr7\UploadedFile;
+
+
+use Illuminate\Http\UploadedFile;
 
 interface FileStorageServiceContract
 {
@@ -13,8 +15,8 @@ interface FileStorageServiceContract
     public static function upload(UploadedFile|string $file): string;
 
     /**
-     * @param string $string - public/images/image_name.png
+     * @param string $file - public/images/image_name.png
      * @return mixed
      */
-    public static function remove(string $string);
+    public static function remove(string $file);
 }

@@ -7,11 +7,11 @@
             <hr>
             <p class="card-text">{{ __($product->short_description) }}</p>
             <div class="d-flex flex-column justify-content-center align-items-start">
-                <small class="text-muted">Categories: </small>
-                <div class="btn-group align-self-end">
-                    @if(!empty($product->category))
-                        @include('categories.parts.category_view', ['category' => $product->category])
-                    @endif
+                <div class="btn-group d-flex justify-content-between w-100 align-items-center">
+                    <small class="text-muted">Categories: </small>
+                    <a href="{{ route('categories.show', $product->category) }}" class="text-muted">
+                        {{ __($product->category?->name ?? '') }}
+                    </a>
                 </div>
             </div>
             <hr>
@@ -22,7 +22,12 @@
                         {{ __('Show') }}
                     </a>
                 </div>
-                <span class="text-muted">{{ $product->end_price }}$</span>
+                <div class="text-muted">
+                    @if ($product->price !== $product->end_price)
+                        <span class="text-muted old-price">{{ $product->price }}$</span>
+                    @endif
+                    <span class="text-muted">{{ $product->end_price }}$</span>
+                </div>
             </div>
         </div>
     </div>

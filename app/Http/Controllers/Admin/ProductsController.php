@@ -38,8 +38,10 @@ class ProductsController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         if ($this->repository->update($product, $request)) {
+            notify()->success("Product successfully updated", position: "topRight");
             return redirect()->route('admin.products.index');
         } else {
+            notify()->error("Oops smth went wrong", position: "topRight");
             return redirect()->back()->withInput();
         }
     }

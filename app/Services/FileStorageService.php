@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Services\Contract\FileStorageServiceContract;
+use App\Services\Contracts\FileStorageServiceContract;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;

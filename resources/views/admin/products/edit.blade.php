@@ -45,7 +45,7 @@
                             >
                                 @foreach($categories as $category)
                                     <option value="{{ $category['id'] }}"
-                                        {{ $category['id'] === $product->category->id ? 'selected' : '' }}
+                                        {{ $category['id'] === $product->category?->id ? 'selected' : '' }}
                                     >{{ $category['name'] }}</option>
                                 @endforeach
                             </select>

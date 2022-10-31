@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Contract\FileStorageServiceContract;
+use App\Services\Contracts\FileStorageServiceContract;
 
 class TestController
 {

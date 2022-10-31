@@ -63,4 +63,10 @@ class User extends Authenticatable
             get: fn() =>$this->role->id === Role::admin()->first()->id
         );
     }
+    public function fullName(): Attribute
+    {
+        return new Attribute(
+            get: fn() => ucfirst($this->attributes['name']) . ' ' . ucfirst($this->attributes['surname'])
+        );
+    }
 }

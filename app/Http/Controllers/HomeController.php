@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all()->take(4);
-        $products = Product::all()->take(6);
+        $products = Product::all()->where('in_stock', '>', 0)->take(6);
 
         return view('home', compact('products', 'categories'));
     }

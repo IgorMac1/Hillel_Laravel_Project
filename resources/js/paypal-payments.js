@@ -38,7 +38,7 @@ paypal.Buttons({
         }).then(function (res) {
             return res.json();
         }).then(function (orderData) {
-            return orderData.id;
+            return orderData.vendor_order_id;
         }).catch(function (error) {
             console.log('error', error);
             return;
@@ -47,12 +47,17 @@ paypal.Buttons({
 
     // Call your server to finalize the transaction
     onApprove: function (data, actions) {
-        console.log(data);
-        return fetch('/paypal/order/' + data.orderID + '/capture/', {
-            method: 'post',
+        return fetch('/paypal/order/' + data.orderID + '/capture', {
+            method: 'POST',
             headers: headers
         }).then(function (res) {
             return res.json();
+        }).then(function(orderData) {
+            iziToast.success({
+                title: 'Payment process was completed',
+                position: 'topRight',
+                onClosing: () => { window.location.href = `/paypal/order/${orderData.id}/thankyou` }
+            });
         }).catch(function (orderData) {
             var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
 

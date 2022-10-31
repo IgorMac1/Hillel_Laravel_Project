@@ -4,25 +4,6 @@ use App\Http\Controllers\TestController;
 use App\Services\Contracts\FileStorageServiceContract;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-//Route::get('test',[TestController::class,'test']);
-
-
-
-//Route::get('/', function () {
-////    dd(route('admin.products.show', 2));
-//    return view('welcome');
-//})->name('main');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -52,4 +33,9 @@ Route::name('admin.')->prefix('admin')->middleware(['auth', 'admin'])->group(fun
 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoriesController::class)->except(['show']);
     Route::resource('products', \App\Http\Controllers\Admin\ProductsController::class)->except(['show']);
+});
+
+Route::prefix('paypal')->group(function() {
+    Route::post('order/create', [\App\Http\Controllers\Payments\PaypalController::class, 'create']);
+    Route::post('order/{orderId}/capture', [\App\Http\Controllers\Payments\PaypalController::class, 'capture']);
 });

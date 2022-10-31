@@ -10,8 +10,7 @@
                 @endif
             </div>
             <div class="col-md-8">
-                {{--                <form id="order-form" action="{{ route('order.create') }}" method="POST">--}}
-                <form id="order-form" action="{{ route('orders') }}" method="POST">
+                <form id="order-form" action="/" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -42,13 +41,7 @@
                             <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ Auth()->user()->phone }}">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
-                        <div class="col-md-6">
-                            <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}">
-                        </div>
-                    </div>
 
                     <div class="form-group row">
                         <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
@@ -65,7 +58,6 @@
                         </div>
                     </div>
 
-                    <button type="submit">Make order</button>
                 </form>
             </div>
             <div class="col-md-4">
@@ -117,7 +109,7 @@
                 </table>
                 <br>
                 <div class="col-12">
-                    {{--                    @include('checkout.payments.paypal')--}}
+                    @include('checkout.payments.paypal')
                 </div>
             </div>
         </div>

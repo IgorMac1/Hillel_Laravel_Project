@@ -90,5 +90,6 @@
     </div>
     <script src="{{ asset('js/iziToast.js') }}"></script>
     @include('vendor.lara-izitoast.toast')
+    @stack('footer-scripts')
 </body>
 </html>

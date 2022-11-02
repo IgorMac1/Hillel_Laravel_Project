@@ -3,7 +3,7 @@
 
 <!-- Include the PayPal JavaScript SDK -->
 <script
-    src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.' . env('PAYPAL_MODE') . '.client_id') }}&currency=USD"
+    src="https://www.paypal.com/sdk/js?client-id={{ config('paypal.' . env('PAYPAL_MODE') . '.client_id') }}&currency={{ config('paypal.currency')  }}"
 ></script>
 @push('footer-scripts')
     @vite(['resources/js/paypal-payments.js'])

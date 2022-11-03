@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -19,8 +20,14 @@ class UsersController extends Controller
         return view('account/users/edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
+
+        $user->update($request->validated());
+        return redirect()->route('account.index');
+//        return redirect()->back();
+
         //        $user->update($request->validated());
+        //return redirect()->route('account.index');
     }
 }

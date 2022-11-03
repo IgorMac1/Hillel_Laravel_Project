@@ -25,9 +25,6 @@ class UsersController extends Controller
 
         $user->update($request->validated());
         return redirect()->route('account.index');
-//        return redirect()->back();
 
-        //        $user->update($request->validated());
-        //return redirect()->route('account.index');
     }
 }

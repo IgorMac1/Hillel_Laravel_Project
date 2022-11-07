@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('vendor_payment_id')->nullable();
-            $table->string('payment_system');
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('status');
-
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('telegram_id')->after('role_id')->nullable();
         });
     }
 
@@ -32,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('telegram_id');
+        });
     }
 };

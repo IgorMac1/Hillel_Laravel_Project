@@ -25,7 +25,8 @@ class User extends Authenticatable
         'email',
         'password',
         'birthdate',
-        'role_id'
+        'role_id',
+        'telegram_id'
     ];
 
     /**
@@ -57,16 +58,57 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function wishes()
+    {
+        return $this->belongsToMany(
+            Product::class,
+            'wish_list',
+            'user_id',
+            'product_id'
+        );
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function addToWish(Product $product)
+    {
+        $this->wishes()->attach($product);
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeFromWish(Product $product)
+    {
+        $this->wishes()->detach($product);
+    }
+
+    public function isWishedProduct(Product $product)
+    {
+        return (bool)$this->wishes()->find($product->id);
+    }
+
+    /**
+     * Mutators $user->is_admin
+     *
+     * @return Attribute
+     */
+
     public function isAdmin(): Attribute
     {
         return new Attribute(
-            get: fn() =>$this->role->id === Role::admin()->first()->id
+            get: fn () => $this->role->id === Role::admin()->first()->id
         );
     }
+
     public function fullName(): Attribute
     {
         return new Attribute(
-            get: fn() => ucfirst($this->attributes['name']) . ' ' . ucfirst($this->attributes['surname'])
+            get: fn () => ucfirst($this->attributes['name']).' '.ucfirst($this->attributes['surname'])
         );
     }
 }

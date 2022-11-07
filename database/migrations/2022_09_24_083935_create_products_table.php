@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
             $table->string('title')->unique();
             $table->text('description');
-            $table->string('short_description',150)->nullable();
-            $table->string('SKU',35)->unique();
+            $table->string('short_description', 150)->nullable();
+            $table->string('SKU', 35)->unique();
             $table->float('price')->startingValue(1);
             $table->tinyInteger('discount')->unsigned()->nullable()->comment('discount in %');
             $table->unsignedInteger('in_stock')->default(0);

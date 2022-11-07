@@ -16,6 +16,6 @@ class OrderStatusesSeeder extends Seeder
     public function run()
     {
         $statuses = collect(OrderStatusesEnum::cases());
-        $statuses->each(fn($status)=>OrderStatus::firstOrCreate(['name'=>$status->value]));
+        $statuses->each(fn ($status) => OrderStatus::firstOrCreate(['name' => $status->value]));
     }
 }

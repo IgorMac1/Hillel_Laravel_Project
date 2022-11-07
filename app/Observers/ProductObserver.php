@@ -7,6 +7,22 @@ use App\Services\FileStorageService;
 
 class ProductObserver
 {
+    public function updated(Product $product)
+    {
+        $updatedQuantity = $product->getOriginal('in_stock') <= 0 && $product->getOriginal('in_stock') < $product->in_stock;
+        $updatedPrice = $product->getOriginal('end_price') > $product->end_price;
+        $updatedDiscount = $product->getOriginal('discount') < $product->discount;
+
+        if ($updatedDiscount || $updatedPrice || $updatedQuantity) {
+            $product->followers()->get()->each->notify(new ProductUpdateNotification(
+                $product,
+                $updatedPrice,
+                $updatedQuantity,
+                $updatedDiscount
+            ));
+        }
+    }
+
     /**
      * Handle the Product "deleted" event.
      *

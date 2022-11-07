@@ -5,7 +5,6 @@ namespace App\Http\Requests;
 use App\Rules\Phone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -31,9 +30,9 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => ['required', 'min:2', 'max:35'],
             'surname' => ['required', 'min:2', 'max:50'],
-            'email' => ['required', 'string', 'email', 'max:255',Rule::unique('users', 'email')->ignore($userId)],
-            'phone' => ['required', 'string', 'max:15', new Phone,Rule::unique('users', 'phone')->ignore($userId)],
-            'birthdate' => ['required', 'date', 'before_or_equal:-18 years']
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($userId)],
+            'phone' => ['required', 'string', 'max:15', new Phone, Rule::unique('users', 'phone')->ignore($userId)],
+            'birthdate' => ['required', 'date', 'before_or_equal:-18 years'],
         ];
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -29,7 +28,7 @@ class UpdateCategoryRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'min:2', 'max:50', Rule::unique('categories', 'name')->ignore($categoryId)],
-            'description' => ['nullable', 'string', 'max:250']
+            'description' => ['nullable', 'string', 'max:250'],
         ];
     }
 }

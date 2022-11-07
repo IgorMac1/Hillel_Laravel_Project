@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\Contract;
 
 use App\Models\Order;

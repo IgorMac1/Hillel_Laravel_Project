@@ -16,6 +16,5 @@ class OrdersController extends Controller
          * 3 - get all product from Cart::instance('cart')->content()
          * 4 - create order products records in db
          */
-
     }
 }

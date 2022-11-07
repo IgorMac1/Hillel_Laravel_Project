@@ -37,7 +37,7 @@ class Order extends Model
     public function inProcess(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->status->name === OrderStatusesEnum::InProcess->name
+            get: fn () => $this->status->name === OrderStatusesEnum::InProcess->name
         );
     }
 }

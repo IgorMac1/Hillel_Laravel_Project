@@ -1,6 +1,7 @@
 <?php
 
 //use App\Http\Controllers\Auth\TelegramLoginController;
+use App\Http\Controllers\Auth\TelegramLoginController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -47,7 +48,7 @@ Route::post('cart/{product}', [\App\Http\Controllers\CartController::class, 'add
 Route::delete('cart', [\App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 Route::post('cart/{product}/count', [\App\Http\Controllers\CartController::class, 'countUpdate'])->name('cart.count.update');
 
-//Route::get('auth/telegram', TelegramLoginController::class)->name('auth.telegram');
+Route::get('auth/telegram', TelegramLoginController::class)->name('auth.telegram');
 
 Route::middleware('auth')->group(function () {
     Route::get('checkout', \App\Http\Controllers\CheckoutController::class)->name('checkout');

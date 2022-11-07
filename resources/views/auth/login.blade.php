@@ -65,6 +65,17 @@
                             </div>
                         </div>
                     </form>
+                    <br>
+                    <h4>Or Sign In via Telegram</h4>
+                    <br>
+                    <script async
+                            src="https://telegram.org/js/telegram-widget.js?19"
+                            data-telegram-login="{{ config('services.telegram-bot-api.name') }}"
+                            data-size="large"
+                            data-radius="0"
+                            data-auth-url="{{ route('auth.telegram') }}"
+                            data-request-access="write"
+                    ></script>
                 </div>
             </div>
         </div>

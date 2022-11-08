@@ -55,8 +55,8 @@ paypal.Buttons({
         }).then(function(orderData) {
             iziToast.success({
                 title: 'Payment process was completed',
-                position: 'topRight',
-                onClosing: () => { window.location.href = `/paypal/order/${orderData.id}/thankyou` }
+                position: 'topRight'
+                // onClosing: () => { window.location.href = `/paypal/order/${orderData.id}/thankyou` }
             });
         }).catch(function (orderData) {
             var errorDetail = Array.isArray(orderData.details) && orderData.details[0];

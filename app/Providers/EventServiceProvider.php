@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\OrderCreatedEvent;
 use App\Listeners\OrderCreatedEmailListener;
+use App\Listeners\UserEventListener;
 use App\Models\Image;
 use App\Models\Product;
 use App\Observers\ImageObserver;
@@ -32,6 +33,10 @@ class EventServiceProvider extends ServiceProvider
     protected $observers = [
         Image::class => [ImageObserver::class],
         Product::class => [ProductObserver::class],
+    ];
+
+    protected $subscribe = [
+        UserEventListener::class
     ];
 
     /**

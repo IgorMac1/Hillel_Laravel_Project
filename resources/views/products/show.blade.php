@@ -9,7 +9,7 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            <img src="{{ $product->thumbnailUrl }}" class="card-img-top" style="width: 200px; height: 300px; margin: 0 auto; display: block;">
+            <img src="{{ $product->thumbnailUrl }}" class="card-img-top" style="width: 400px; height: 300px; margin: 0 auto; display: block;">
         </div>
         <div class="col-md-6">
             @if ($product->price !== $product->end_price)

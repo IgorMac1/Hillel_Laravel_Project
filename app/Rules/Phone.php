@@ -6,7 +6,6 @@ use Illuminate\Contracts\Validation\Rule;
 
 class Phone implements Rule
 {
-
     /**
      * Determine if the validation rule passes.
      *
@@ -16,9 +15,9 @@ class Phone implements Rule
      */
     public function passes($attribute, $value)
     {
-        preg_match('/\+[0-9]{2}\([0-9]{3}\)[0-9]{7}/',$value,$matches);
+        preg_match('/\+[0-9]{2}\([0-9]{3}\)[0-9]{7}/', $value, $matches);
 
-        return !empty($matches);
+        return ! empty($matches);
     }
 
     /**

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
@@ -35,7 +34,7 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateCategoryRequest $request
+     * @param  CreateCategoryRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCategoryRequest $request)
@@ -48,7 +47,7 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Category $category
+     * @param  Category  $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Category $category)
@@ -59,25 +58,27 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateCategoryRequest $request
-     * @param Category $category
+     * @param  UpdateCategoryRequest  $request
+     * @param  Category  $category
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Category $category
+     * @param  Category  $category
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)
     {
         $category->delete();
+
         return redirect()->back();
     }
 }

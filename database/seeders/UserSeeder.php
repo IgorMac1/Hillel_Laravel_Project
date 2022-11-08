@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -16,10 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        if (is_null(User::where('email','admin@admin.com')->first())){
+        if (is_null(User::where('email', 'admin@admin.com')->first())) {
             User::factory()->admin()->withEmail('admin@admin.com')->create();
         }
         User::factory(10)->create();
-
     }
 }

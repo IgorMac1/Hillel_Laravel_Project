@@ -3,7 +3,6 @@
 namespace App\Repositories\Contracts;
 
 use App\Helpers\Adapters\TransactionAdapter;
-use App\Http\Requests\CreateProductRequest;
 use App\Models\Order;
 
 interface OrderRepositoryContract

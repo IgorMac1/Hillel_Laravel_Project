@@ -22,7 +22,7 @@ class CartController extends Controller
             $product->endPrice
         )->associate(Product::class);
 
-        notify()->success("Product was added to the cart", position: "topRight");
+        notify()->success('Product was added to the cart', position: 'topRight');
 
         return redirect()->back();
     }
@@ -31,7 +31,7 @@ class CartController extends Controller
     {
         Cart::instance('cart')->remove($request->rowId);
 
-        notify()->success("Product was removed", position: "topRight");
+        notify()->success('Product was removed', position: 'topRight');
 
         return redirect()->back();
     }
@@ -39,13 +39,14 @@ class CartController extends Controller
     public function countUpdate(Request $request, Product $product)
     {
         if ($product->in_stock < $request->product_count) {
-            notify()->error("Max count of current product is {$product->in_stock}", position: "topRight");
+            notify()->error("Max count of current product is {$product->in_stock}", position: 'topRight');
+
             return redirect()->back();
         }
 
         Cart::instance('cart')->update($request->rowId, $request->product_count);
 
-        notify()->success("Product count was updated", position: "topRight");
+        notify()->success('Product count was updated', position: 'topRight');
 
         return redirect()->back();
     }

@@ -6,23 +6,22 @@ use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
-use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Facades\Invoice as InvoiceFacade;
+use LaravelDaily\Invoices\Invoice;
 
 class InvoicesService implements Contract\InvoicesServiceContract
 {
-
     public function generate(Order $order): Invoice
     {
         $user = $order->user;
         $customer = new Buyer([
-            'name' =>  $user->fullName,
+            'name' => $user->fullName,
             'custom_fields' => [
                 'email' => $user->email,
                 'phone' => $user->phone,
                 'city' => $order->city,
                 'address' => $order->address,
-            ]
+            ],
         ]);
 
         $items = $this->getInvoiceItems($order->products);
@@ -48,7 +47,7 @@ class InvoicesService implements Contract\InvoicesServiceContract
     {
         $items = [];
 
-        $products->each(function($product) use (&$items) {
+        $products->each(function ($product) use (&$items) {
             $items[] = (new InvoiceItem())
                 ->title($product->title)
                 ->pricePerUnit($product->pivot->single_price)

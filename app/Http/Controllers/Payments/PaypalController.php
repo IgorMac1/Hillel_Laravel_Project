@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Payments;
 
-
 use App\Events\OrderCreatedEvent;
 use App\Helpers\Adapters\TransactionAdapter;
 use App\Http\Controllers\Controller;
@@ -16,6 +15,7 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 class PaypalController extends Controller
 {
     const PAYMENT_SYSTEM = 'PAYPAL';
+
     protected PayPalClient $payPalClient;
 
     public function __construct()
@@ -33,7 +33,7 @@ class PaypalController extends Controller
             $total = Cart::instance('cart')->total(2, '.', '');
             $paypalOrder = $this->createPaymentOrder($total);
             $request = array_merge($request->validated(), [
-                'vendor_order_id' => $paypalOrder['id']
+                'vendor_order_id' => $paypalOrder['id'],
             ]);
 
             $order = $repository->create($request, $total);
@@ -44,6 +44,7 @@ class PaypalController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
             logs()->warning($exception);
+
             return response()->json(['error' => $exception->getMessage()], 422);
         }
     }
@@ -69,6 +70,7 @@ class PaypalController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
             logs()->warning($exception);
+
             return response()->json(['error' => $exception->getMessage()], 422);
         }
     }
@@ -82,7 +84,6 @@ class PaypalController extends Controller
         return view('thankyou/summary', compact('order'));
     }
 
-
     protected function createPaymentOrder($total): array
     {
         return $this->payPalClient->createOrder([
@@ -91,10 +92,10 @@ class PaypalController extends Controller
                 [
                     'amount' => [
                         'currency_code' => config('paypal.currency'),
-                        'value' => $total
-                    ]
-                ]
-            ]
+                        'value' => $total,
+                    ],
+                ],
+            ],
         ]);
     }
 }

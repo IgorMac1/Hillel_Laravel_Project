@@ -13,7 +13,7 @@ class Role extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     public function users()
@@ -23,7 +23,7 @@ class Role extends Model
 
     public function scopeAdmin($query)
     {
-        return$this->getRole($query,'admin');
+        return$this->getRole($query, 'admin');
     }
 
     public function scopeCustomer($query)
@@ -31,12 +31,12 @@ class Role extends Model
         return$this->getRole($query);
     }
 
-    protected function getRole($query,$role = 'customer')
+    protected function getRole($query, $role = 'customer')
     {
         return $query->where(
-          'name',
-          '=',
-          RolesEnum::findByKey(ucfirst($role))->value
+            'name',
+            '=',
+            RolesEnum::findByKey(ucfirst($role))->value
         );
     }
 }

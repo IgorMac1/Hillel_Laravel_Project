@@ -36,7 +36,7 @@ class UpdateProductRequest extends FormRequest
             'in_stock' => ['required', 'numeric', 'min:0'],
             'category_id' => ['required', 'numeric'],
             'thumbnail' => ['nullable', 'image:jpeg,png'],
-            'images.*' => ['image:jpeg,png']
+            'images.*' => ['image:jpeg,png'],
         ];
     }
 }

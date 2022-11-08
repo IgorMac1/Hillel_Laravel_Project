@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "883854c090eb31411b24bc502f9c08c8",
+    "content-hash": "ce4d7150136b6f30e92be28b1f3e3301",
     "packages": [
         {
             "name": "appslabke/lara-izitoast",
@@ -1156,6 +1156,72 @@
                 }
             ],
             "time": "2022-08-28T14:45:39+00:00"
+        },
+        {
+            "name": "laravel-notification-channels/telegram",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-notification-channels/telegram.git",
+                "reference": "76299fa06f48cb175e17ea951ccf3b185329a1ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-notification-channels/telegram/zipball/76299fa06f48cb175e17ea951ccf3b185329a1ac",
+                "reference": "76299fa06f48cb175e17ea951ccf3b185329a1ac",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0",
+                "illuminate/contracts": "8.45 - 9",
+                "illuminate/notifications": "8.45 - 9",
+                "illuminate/support": "8.45 - 9",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NotificationChannels\\Telegram\\TelegramServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Telegram\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irfaq Syed",
+                    "email": "github@lukonet.net",
+                    "homepage": "https://lukonet.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Telegram Notifications Channel for Laravel",
+            "homepage": "https://github.com/laravel-notification-channels/telegram",
+            "keywords": [
+                "laravel",
+                "notification",
+                "telegram",
+                "telegram notification",
+                "telegram notifications channel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-notification-channels/telegram/issues",
+                "source": "https://github.com/laravel-notification-channels/telegram/tree/2.1.0"
+            },
+            "time": "2022-07-01T02:14:31+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2863,6 +2929,68 @@
                 }
             ],
             "time": "2022-10-11T16:52:29+00:00"
+        },
+        {
+            "name": "pschocke/laravel-telegram-login-widget",
+            "version": "v2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pschocke/laravel-telegram-login-widget.git",
+                "reference": "27ae71e93267fdb785cd1e46f544bc9c6779d33f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pschocke/laravel-telegram-login-widget/zipball/27ae71e93267fdb785cd1e46f544bc9c6779d33f",
+                "reference": "27ae71e93267fdb785cd1e46f544bc9c6779d33f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~9"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~7",
+                "phpunit/phpunit": "^9",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "pschocke\\TelegramLoginWidget\\TelegramLoginWidgetServiceProvider"
+                    ],
+                    "aliases": {
+                        "MyPackage": "pschocke\\TelegramLoginWidget\\Facades\\MyPackage"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "pschocke\\TelegramLoginWidget\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Schocke",
+                    "email": "patrick@ausbildung-ms.de",
+                    "homepage": "https://github.com/pschocke/"
+                }
+            ],
+            "description": "Easily integrate Telegrams login widget into your Laravel application to send Telegram messages",
+            "homepage": "https://github.com/pschocke/telegramloginwidget",
+            "keywords": [
+                "TelegramLoginWidget",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/pschocke/laravel-telegram-login-widget/issues",
+                "source": "https://github.com/pschocke/laravel-telegram-login-widget/tree/v2"
+            },
+            "time": "2022-04-02T10:00:28+00:00"
         },
         {
             "name": "psr/container",

@@ -13,7 +13,7 @@ class Transaction extends Model
         'vendor_payment_id',
         'payment_system',
         'user_id',
-        'status'
+        'status',
     ];
 
     public function user()

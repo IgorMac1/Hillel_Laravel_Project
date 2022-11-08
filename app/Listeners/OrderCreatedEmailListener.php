@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\OrderCreatedEvent;
 use App\Notifications\OrderCreatedEmailNotification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class OrderCreatedEmailListener
 {

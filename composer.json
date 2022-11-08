@@ -10,6 +10,7 @@
         "appslabke/lara-izitoast": "^1.1",
         "bumbummen99/shoppingcart": "^4.2",
         "guzzlehttp/guzzle": "^7.2",
+        "laravel-notification-channels/telegram": "^2.1",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/telescope": "^4.9",
@@ -17,12 +18,13 @@
         "laravel/ui": "^4.0",
         "laraveldaily/laravel-invoices": "^3.0",
         "predis/predis": "^2.0",
+        "pschocke/laravel-telegram-login-widget": "^2.0",
         "srmklive/paypal": "~3.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
+        "laravel/pint": "^1.2",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",

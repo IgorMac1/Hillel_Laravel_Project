@@ -6,13 +6,7 @@
             <div class="col-md-12">
                 <h3 class="text-center">{{ __('Wish List') }}</h3>
             </div>
-            <div class="col-md-12">
-                @if (session('status'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-            </div>
+
             <div class="col-12">
                 @if(Cart::instance('wishlist')->count() > 0)
                     <table class="table table-light">

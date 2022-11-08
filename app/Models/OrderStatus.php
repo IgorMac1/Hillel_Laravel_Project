@@ -17,7 +17,6 @@ class OrderStatus extends Model
         return $this->hasMany(Order::class);
     }
 
-
     public function scopeDefaultStatus($query)
     {
         return $query->where('name', OrderStatusesEnum::InProcess->value);

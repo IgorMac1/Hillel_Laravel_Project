@@ -1,6 +1,5 @@
 <?php
 
-//use App\Http\Controllers\Auth\TelegramLoginController;
 use App\Http\Controllers\Auth\TelegramLoginController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Cache;

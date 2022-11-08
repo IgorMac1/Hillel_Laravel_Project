@@ -62,7 +62,9 @@ class Product extends Model
 
     public function thumbnailUrl(): Attribute
     {
-        return new Attribute(get: fn () => Storage::url($this->attributes['thumbnail']));
+        return new Attribute(get: function() {
+            return Storage::temporaryUrl($this->attributes['thumbnail'], now()->addMinutes(10));
+        });
     }
 
     public function endPrice(): Attribute
